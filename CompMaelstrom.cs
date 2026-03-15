@@ -1,38 +1,49 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
 public class CompMaelstrom : ThingComp {
 	public CompProperties_Maelstrom Props => (CompProperties_Maelstrom) this.props;
 
+	// How many smaller detonations are left until the final
 	public int minorDetsLeft;
+	// Game ticks until the next detonation
 	public float ticksToNextDetonation = 1;
 
 	public override void Initialize(CompProperties p) {
 		base.Initialize(p);
+		// Make this detonate immediately if <minorDetonationOnSpawn> is true
 		if (!Props.minorDetonationOnSpawn)
 			this.ticksToNextDetonation = Props.ticksBetweenDetonations;
+		// Get number of minor detonations from comp properties
 		this.minorDetsLeft = Props.minorDetonationsNumber;
 	}
 
 	public override void CompTickInterval(int delta) 
 	{
+		// Checks if it is time to detonate
 		if (this.ticksToNextDetonation <= 0)
 			return;
 		this.ticksToNextDetonation -= delta;
 		if (this.ticksToNextDetonation > 0)
 			return;
 		
+		// If this should be a minor detonation
 		if (this.minorDetsLeft > 0)
 		{
+			// Decrement minor detonations counter
 			--this.minorDetsLeft;
+			// Reset ticks counter
 			this.ticksToNextDetonation += Props.ticksBetweenDetonations;
+			// Initiate minor detonation
 			this.Maelstrom_Detonate(false);
 		}
+		// If this is the final detonation
 		else
 		{
+			// Initiate final detonation
 			this.Maelstrom_Detonate(true);
+			// Destroy this
 			this.parent.Destroy(DestroyMode.Vanish);
 		}
 	}

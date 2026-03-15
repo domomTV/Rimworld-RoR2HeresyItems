@@ -4,7 +4,7 @@ using UnityEngine;
 using Verse;
 
 // Have to make a class separate from Verb_AbilityShoot and Verb_Shoot because pawns will move before shooting for some reason.
-// Note that XP will not be gained
+// Shooting XP will not be gained from casting
 public class Verb_LaunchProjectileHeresy : Verb_LaunchProjectileStatic, IAbilityVerb {
 	// Stolen from Verb_Shoot
 	protected override int ShotsPerBurst => this.BurstShotCount;

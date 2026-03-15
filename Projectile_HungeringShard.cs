@@ -11,7 +11,7 @@ public class Projectile_HungeringShard : Projectile {
 		base.Impact(hitThing, blockedByShield);
 		BattleLogEntry_RangedImpact entryRangedImpact = new BattleLogEntry_RangedImpact(this.launcher, hitThing, this.intendedTarget.Thing, this.equipmentDef, this.def, this.targetCoverDef);
 		Find.BattleLog.Add(entryRangedImpact);
-		// this.NotifyImpact(hitThing, map, position);
+		// this.NotifyImpact(hitThing, map, position); <----- Caused some BS cause projectile is explosive I think?
 		if (hitThing != null)
 		{
 			bool instigatorGuilty = !(this.launcher is Pawn launcher) || !launcher.Drafted;
@@ -49,20 +49,31 @@ public class Projectile_HungeringShard : Projectile {
 		}
 	}
 	
+	// Tries to attach a hungering shard to hit thing
 	public void TryAttachShard(Thing t, BodyPartRecord bp, LogEntry_DamageResult log)
 	{
+		// Does nothing if thing is destroyed
 		if (t.Destroyed)
 			return;
+		// Initializes new hungering shard
 		HungeringShard newThing = (HungeringShard) ThingMaker.MakeThing(ThingDef.Named("domom_HungeringShard"));
+		// Sets shard's launcher
 		newThing.launcher = this.launcher;
+		// If thing is a pawn:
 		if (t is Pawn)
 		{
+			// Set's shard's target body part
 			newThing.bodyPart = bp;
+			// Set's shard's log
 			newThing.log = log;
+			// Attaches to pawn's attachment comp
 			newThing.AttachTo(t);
 		}
+		// If thing is not a pawn:
 		else
+			// Set's shard's compless parent
 			newThing.parentNoComp = t;
+		// Spawn shard in the world
 		GenSpawn.Spawn(newThing, t.Position, t.Map, Rot4.North);
 	}
 }
