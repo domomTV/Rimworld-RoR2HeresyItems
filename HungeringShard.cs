@@ -4,7 +4,7 @@ using Verse;
 public class HungeringShard : AttachableThing {
 	// Thing that launched the projectile that spawned this
 	public Thing launcher;
-	// Body part the projectile hit
+	// Body part the projectile hit, and that the explosion will try to hit
 	public BodyPartRecord bodyPart;
 	// Attached parent, used for things without attachment comp
 	public Thing parentNoComp;
@@ -12,8 +12,8 @@ public class HungeringShard : AttachableThing {
 	public LogEntry_DamageResult log;
 
 	// Cached offset for draw position
+	// Needed to keep a consistent visual offset
 	public Vector3 drawOffset = Vector3.zero;
-	// If true, drawOffset will be used, otherwise drawOffset is chosen & set
 	public bool cached = false;
 	
 	public override string InspectStringAddon { get; }
@@ -22,32 +22,30 @@ public class HungeringShard : AttachableThing {
 	{
 		get
 		{
-			// Gets parent, with or without attachment comp
-			Thing parent = this.parentNoComp != null ? this.parentNoComp : this.parent;
-			// Gets base draw position
+			Thing parent = this.parentNoComp ?? this.parent;
 			Vector3 baseVal = base.DrawPos;
-			// If no parent, use base position
+			// Uses base drawPos if no parent attached, 
 			if (parent == null)
 				return baseVal;
-			// Gets parent's draw bound data
+			// Use center of parent's draw bounds as a starting point
+			// Needed for larget parents
 			Bounds bounds = parent.DrawBounds();
-			// Use center of draw bounds as a starting point
 			Vector3 ret = bounds.center;
 			// Set y to base value
+			// Keeps draw layer consistent
 			ret.y = baseVal.y;
-			// If offset isn't already cached:
 			if (!this.cached)
 			{
-				// Gets thing's size
 				Vector3 size = bounds.size;
 				// Calculates draw offset based on thing's size
+				// Allows larger parents to have more spread out shards
 				Vector3 offset = new Vector3(size.x * Rand.Range(-0.5f, 0.5f), 0, size.z * Rand.Range(-0.5f, 0.5f));
 				// Stores offset & marks it as cached
 				this.drawOffset = offset;
 				this.cached = true;
 			}
 
-			// Return draw position with offset
+			// Return draw position with cached offset
 			return ret + this.drawOffset;
 		}
 		

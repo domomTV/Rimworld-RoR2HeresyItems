@@ -8,11 +8,9 @@ public class CompHungeringShard : ThingComp {
 
 	public override void Initialize(CompProperties p) {
 		base.Initialize(p);
-		// Set ticks until detonation from property defined in comp properties
 		this.ticksUntilDetonation = Props.ticksUntilDetonation;
 	}
 	
-	// If ticksUntilDetonation <= 0, detonate
 	public override void CompTickInterval(int delta) 
 	{
 		if (this.ticksUntilDetonation <= 0)
@@ -23,7 +21,6 @@ public class CompHungeringShard : ThingComp {
 	}
 
 	public void Detonate() {
-		// Does nothing if parent isn't HunderingShard or shard is already destroyed
 		if (!(this.parent is HungeringShard shard) || shard.Destroyed)
 			return;
 		// Gets damage dealt from comp properties, or damage def as fallback
@@ -32,18 +29,17 @@ public class CompHungeringShard : ThingComp {
 		DamageInfo damageInfo = new DamageInfo(this.Props.damageType, damage, this.Props.damageType.defaultArmorPenetration, instigator: shard.launcher, intendedTarget: shard.parent);
 		// If parent isn't a pawn:
 		if (shard.parentNoComp != null)
-			// Simply damage the thing
 			shard.parentNoComp.TakeDamage(damageInfo);
 		// If parent is a pawn:
 		else if (shard.parent != null)
 		{
 			// Targets the same part the projectile hit
 			damageInfo.SetHitPart(shard.bodyPart);
-			// Damage the thing & link it to the projectile's log
+			// Link the damage to the projectile's log
 			shard.parent.TakeDamage(damageInfo).AssociateWithLog(shard.log);
 		}
 		
-		// Ensure this shard is destroyed
+		// Shard is destroyed no matter what
 		if (!shard.Destroyed)
 			shard.Destroy();
 	}

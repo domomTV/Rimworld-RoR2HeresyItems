@@ -10,15 +10,12 @@ public class Verb_LaunchEssenceOfHeresy : Verb_LaunchProjectileHeresy {
 	}
 
 	protected override bool TryCastShot() {
-		// Searching through all pawns on caster's map:
+		// Searching through all pawns on caster's map
 		foreach (Pawn pawn in this.caster.Map.mapPawns.AllPawnsSpawned)
 		{
-			// If pawn is targetable & not in fog:
+			// If pawn is targetable & not in fog, try to fire at them
 			if (this.CanTargetPawn(pawn) && !pawn.Fogged())
-			{
-				// Try to fire a projectile at this pawn
 				this.FireProjectileAt((LocalTargetInfo) pawn);
-			}
 		}
 		// Stolen from Verb_AbilityShoot
 		// Sets ability cooldown if needed
@@ -39,9 +36,8 @@ public class Verb_LaunchEssenceOfHeresy : Verb_LaunchProjectileHeresy {
 			return false;
 		// Stores projectile's travel line
 		ShootLine resultingLine;
-		// Gets travel line, stores if it has line of sight
+		// Gets travel line, if line of sight is needed & doesn't have, returns 
 		bool shootLineFromTo = this.TryFindShootLineFromTo(this.caster.Position, target, out resultingLine);
-		// If line of sight is required, and it does not have:
 		if (this.verbProps.stopBurstWithoutLos && !shootLineFromTo)
 			return false;
 		// Calls equipment comps

@@ -18,13 +18,13 @@ public class Projectile_HooksOfHeresy: Projectile {
 				}
 			}
 		}
+		
 		Thing thing = GenSpawn.Spawn(ThingMaker.MakeThing(this.def.projectile.spawnsThingDef), loc, map);
-		// If thing to spawn is MaelstromOrb:
 		if (thing is MaelstromOrb orb)
 		{
-			// Sets launcher
+			// Stores the projectile's def & launcher
+			// Used for combat logs
 			orb.instigator = this.launcher;
-			// Sets projectile def
 			orb.projectileDef = this.def;
 		}
 		if (!thing.def.CanHaveFaction)

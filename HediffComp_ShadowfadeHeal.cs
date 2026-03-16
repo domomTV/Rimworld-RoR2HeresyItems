@@ -31,11 +31,12 @@ public class HediffComp_ShadowfadeHeal : HediffComp {
 	}
 
 	// Changed from HediffComp_HealPermanentWounds (note: is no longer static)
-	// Tries to heal a random wound
+	/// <summary>
+	/// Tries to partially heal a random non-permanent, non-chronic injury.
+	/// </summary>
+	/// <param name="pawn">Pawn to heal</param>
 	public void TryHealRandomWound(Pawn pawn) {
-		// Stores hediff to try & heal
 		Hediff result;
-		// Finds a random injury that isn't chronic or permanent, otherwise does nothing 
 		if (!pawn.health.hediffSet.hediffs.Where(hd => hd.def.hediffClass == typeof(Hediff_Injury) && !hd.IsPermanent() && !hd.def.chronic).TryRandomElement(out result))
 			return;
 		// Reduces injury's severity by random value, based on comp properties

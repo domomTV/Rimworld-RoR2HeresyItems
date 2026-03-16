@@ -49,29 +49,26 @@ public class Projectile_HungeringShard : Projectile {
 		}
 	}
 	
-	// Tries to attach a hungering shard to hit thing
+	// Tries to attach a hungering shard to thing
 	public void TryAttachShard(Thing t, BodyPartRecord bp, LogEntry_DamageResult log)
 	{
-		// Does nothing if thing is destroyed
 		if (t.Destroyed)
 			return;
 		// Initializes new hungering shard
 		HungeringShard newThing = (HungeringShard) ThingMaker.MakeThing(ThingDef.Named("domom_HungeringShard"));
-		// Sets shard's launcher
 		newThing.launcher = this.launcher;
-		// If thing is a pawn:
 		if (t is Pawn)
 		{
-			// Set's shard's target body part
+			// Sets shard's target body part
+			// Will try to damage this when detonating
 			newThing.bodyPart = bp;
-			// Set's shard's log
+			// Sets shard's log
+			// Detonation damage will also be linked to this
 			newThing.log = log;
-			// Attaches to pawn's attachment comp
 			newThing.AttachTo(t);
 		}
-		// If thing is not a pawn:
 		else
-			// Set's shard's compless parent
+			// Sets shard's compless parent
 			newThing.parentNoComp = t;
 		// Spawn shard in the world
 		GenSpawn.Spawn(newThing, t.Position, t.Map, Rot4.North);

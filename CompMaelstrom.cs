@@ -31,9 +31,7 @@ public class CompMaelstrom : ThingComp {
 		// If this should be a minor detonation
 		if (this.minorDetsLeft > 0)
 		{
-			// Decrement minor detonations counter
 			--this.minorDetsLeft;
-			// Reset ticks counter
 			this.ticksToNextDetonation += Props.ticksBetweenDetonations;
 			// Initiate minor detonation
 			this.Maelstrom_Detonate(false);
@@ -43,7 +41,6 @@ public class CompMaelstrom : ThingComp {
 		{
 			// Initiate final detonation
 			this.Maelstrom_Detonate(true);
-			// Destroy this
 			this.parent.Destroy(DestroyMode.Vanish);
 		}
 	}
