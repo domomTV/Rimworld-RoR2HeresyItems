@@ -27,6 +27,7 @@ public class CompHungeringShard : ThingComp {
 		int damage = this.Props.damageAmountBase != -1 ? this.Props.damageAmountBase : this.Props.damageType.defaultDamage;
 		// Construct damage info from comp properties & projectile info
 		DamageInfo damageInfo = new DamageInfo(this.Props.damageType, damage, this.Props.damageType.defaultArmorPenetration, instigator: shard.launcher, intendedTarget: shard.parent);
+		damageInfo.SetWeaponHediff(HediffDef.Named("domom_VisionsOfHeresy"));
 		// If parent isn't a pawn:
 		if (shard.parentNoComp != null)
 			shard.parentNoComp.TakeDamage(damageInfo);

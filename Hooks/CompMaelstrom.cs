@@ -101,7 +101,7 @@ public class CompMaelstrom : ThingComp {
 			damageAmount, 
 			(float) armorPenetration, 
 			soundExplode, 
-			null, 
+			ThingDef.Named("domom_Hooks_VerbScum"), 
 			projectileDef, 
 			null, 
 			postExplosionSpawnThingDef, 

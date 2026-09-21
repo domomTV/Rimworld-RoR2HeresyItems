@@ -17,6 +17,7 @@ public class Projectile_HungeringShard : Projectile {
 			bool instigatorGuilty = !(this.launcher is Pawn launcher) || !launcher.Drafted;
 			DamageInfo dinfo1 = new DamageInfo(this.DamageDef, this.DamageAmount, this.ArmorPenetration, this.ExactRotation.eulerAngles.y, this.launcher, weapon: this.equipmentDef, intendedTarget: this.intendedTarget.Thing, instigatorGuilty: instigatorGuilty);
 			dinfo1.SetWeaponQuality(this.equipmentQuality);
+			dinfo1.SetWeaponHediff(HediffDef.Named("domom_VisionsOfHeresy"));
 			DamageWorker.DamageResult result = hitThing.TakeDamage(dinfo1);
 			result.AssociateWithLog(entryRangedImpact);
 			if (result.totalDamageDealt > 0 && !blockedByShield)
