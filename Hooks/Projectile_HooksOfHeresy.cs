@@ -1,7 +1,8 @@
 ﻿using Verse;
 
-// Stolen & edited from Projectile_SpawnsThing
 public class Projectile_HooksOfHeresy: Projectile {
+	
+	// Stolen & edited from Projectile_SpawnsThing
 	protected override void Impact(Thing hitThing, bool blockedByShield = false)
 	{
 		Map map = this.Map;
@@ -20,15 +21,16 @@ public class Projectile_HooksOfHeresy: Projectile {
 		}
 		
 		Thing thing = GenSpawn.Spawn(ThingMaker.MakeThing(this.def.projectile.spawnsThingDef), loc, map);
+		// Save projectile launcher & def for combat logs
 		if (thing is MaelstromOrb orb)
 		{
-			// Stores the projectile's def & launcher
-			// Used for combat logs
 			orb.instigator = this.launcher;
 			orb.projectileDef = this.def;
 		}
+		
 		if (!thing.def.CanHaveFaction)
 			return;
+		
 		thing.SetFaction(this.Launcher.Faction);
 	}
 }

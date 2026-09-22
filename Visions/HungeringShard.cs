@@ -4,10 +4,13 @@ using Verse;
 public class HungeringShard : AttachableThing {
 	// Thing that launched the projectile that spawned this
 	public Thing launcher;
+	
 	// Body part the projectile hit, and that the explosion will try to hit
 	public BodyPartRecord bodyPart;
+	
 	// Attached parent, used for things without attachment comp
 	public Thing parentNoComp;
+	
 	// Log from the projectile
 	public LogEntry_DamageResult log;
 
@@ -28,7 +31,7 @@ public class HungeringShard : AttachableThing {
 			if (parent == null)
 				return baseVal;
 			// Use center of parent's draw bounds as a starting point
-			// Needed for larget parents
+			// Needed for larger parents
 			Bounds bounds = parent.DrawBounds();
 			Vector3 ret = bounds.center;
 			// Set y to base value

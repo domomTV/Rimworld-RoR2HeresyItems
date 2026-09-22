@@ -1,9 +1,9 @@
 ﻿using RimWorld;
 using Verse;
 
+// Applies shadowfade before jumping
 public class Verb_JumpStridesOfHeresy : Verb_CastAbilityJump {
 	protected override bool TryCastShot() {
-		// Checks if cast is valid
 		bool success = base.TryCastShot();
 		if (success && this.CasterIsPawn)
 		{

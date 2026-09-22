@@ -10,45 +10,40 @@ public class Verb_LaunchEssenceOfHeresy : Verb_LaunchProjectileHeresy {
 	}
 
 	protected override bool TryCastShot() {
-		// Searching through all pawns on caster's map
+		// Searches through all pawns on caster's map for valid targets
 		foreach (Pawn pawn in this.caster.Map.mapPawns.AllPawnsSpawned)
 		{
-			// If pawn is targetable & not in fog, try to fire at them
 			if (this.CanTargetPawn(pawn) && !pawn.Fogged())
 				this.FireProjectileAt((LocalTargetInfo) pawn);
 		}
-		// Stolen from Verb_AbilityShoot
-		// Sets ability cooldown if needed
+		
+		// Stolen from Verb_AbilityShoot, sets ability cooldown if needed
 		if (this.Ability.def.cooldownTicksRange.min > 0)
 			this.Ability.StartCooldown(this.Ability.def.cooldownTicksRange.RandomInRange);
+		
 		return true;
 	}
 
-	// Stolen from Verb_LaunchProjectile
+	// Stolen from Verb_LaunchProjectile, removed stuff so bullets never miss
 	protected bool FireProjectileAt(LocalTargetInfo target) {
-		// Does nothing if target is invalid, or target is on another map
 		if (target.HasThing && target.Thing.Map != this.caster.Map)
 			return false;
-		// Gets projectile def
+		
 		ThingDef projectileDef = this.Projectile;
-		// Does nothing if projectile isn't defined
 		if (projectileDef == null)
 			return false;
-		// Stores projectile's travel line
+		
 		ShootLine resultingLine;
-		// Gets travel line, if line of sight is needed & doesn't have, returns 
 		bool shootLineFromTo = this.TryFindShootLineFromTo(this.caster.Position, target, out resultingLine);
 		if (this.verbProps.stopBurstWithoutLos && !shootLineFromTo)
 			return false;
-		// Calls equipment comps
+
 		if (this.EquipmentSource != null)
 		{
 			this.EquipmentSource.GetComp<CompChangeableProjectile>()?.Notify_ProjectileLaunched();
 			this.EquipmentSource.GetComp<CompApparelVerbOwner_Charged>()?.UsedOnce();
 		}
 
-		// Don't really know whats happening below
-		
 		this.lastShotTick = Find.TickManager.TicksGame;
 		Thing launcher = this.caster;
 		Thing thing = (Thing) this.EquipmentSource;
@@ -69,8 +64,8 @@ public class Verb_LaunchEssenceOfHeresy : Verb_LaunchProjectileHeresy {
 		return true;
 	}
 
+	// Returns true if pawn isn't dead or suspended, and has the Ruin hediff
 	private bool CanTargetPawn(Pawn p) {
-		// Returns true if pawn isn't dead or suspended, and has the Ruin hediff
 		return !p.Dead && !p.Suspended && p.health.hediffSet.HasHediff(HediffDef.Named("domom_Ruin"));
 	}
 }

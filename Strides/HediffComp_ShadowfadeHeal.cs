@@ -17,7 +17,6 @@ public class HediffComp_ShadowfadeHeal : HediffComp {
 	}
 
 	// Changed from HediffComp_HealPermanentWounds
-	// Resets ticks until next heal to a random value based on comp properties
 	private void ResetTicksToHeal() => this.ticksToHeal = this.Props.ticksBetweenHealRange.RandomInRange;
 
 	public override void CompPostTickInterval(ref float severityAdjustment, int delta)
@@ -31,15 +30,11 @@ public class HediffComp_ShadowfadeHeal : HediffComp {
 	}
 
 	// Changed from HediffComp_HealPermanentWounds (note: is no longer static)
-	/// <summary>
-	/// Tries to partially heal a random non-permanent, non-chronic injury.
-	/// </summary>
-	/// <param name="pawn">Pawn to heal</param>
+	// Tries to reduce the severity of a random non-permanent, non-chronic injury
 	public void TryHealRandomWound(Pawn pawn) {
 		Hediff result;
 		if (!pawn.health.hediffSet.hediffs.Where(hd => hd.def.hediffClass == typeof(Hediff_Injury) && !hd.IsPermanent() && !hd.def.chronic).TryRandomElement(out result))
 			return;
-		// Reduces injury's severity by random value, based on comp properties
 		HealthUtility.AdjustSeverity(pawn, result.def, this.Props.severityPerHealRange.RandomInRange);
 	}
 
