@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ============================= -->
+		<!-- STRIDES OF HERESY -->
+	<!-- ============================= -->
+	
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>domom_StridesOfHeresy</defName>
+		<label>heretic's leg</label>
+		<labelNoun>a heretic's leg</labelNoun>
+		<description>An organic leg replacement resembling a bird's, covered in twisted scars. Through means unknown, it can propel users into a state between realities for a few seconds at a time, allowing for an easy escape from tough situations. The mangled scars it bears render it slightly worse than an organic leg.</description>
+		<descriptionHyperlinks><ThingDef>domom_StridesOfHeresy</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>domom_StridesOfHeresy</spawnThingOnRemoved>
+		<abilities>
+			<li>domom_StridesOfHeresy</li>
+		</abilities>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.85</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+		<comps>
+			<li Class="HediffCompProperties_HeresyEnhanceAbility">
+				<baseDef>domom_StridesOfHeresy</baseDef>
+				<enhancedDef>domom_StridesOfHeresy_Enhanced</enhancedDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<ThingDef ParentName="BodyPartHeresyBase">
+		<defName>domom_StridesOfHeresy</defName>
+		<label>strides of heresy</label>
+		<description>An organic leg replacement resembling a bird's, covered in twisted scars. Through means unknown, it can propel users into a state between realities for a few seconds at a time, allowing for an easy escape from tough situations. The mangled scars it bears render it slightly worse than an organic leg.</description>
+		<descriptionHyperlinks><RecipeDef>domom_InstallStridesOfHeresy</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+		<statBases>
+			<Mass>7</Mass>
+			<MarketValue>510</MarketValue>
+		</statBases>
+		<costList>
+			<Shard MayRequire="Ludeon.RimWorld.Anomaly">1</Shard>
+			<Bioferrite MayRequire="Ludeon.RimWorld.Anomaly">10</Bioferrite>
+			<Meat_Twisted MayRequire="Ludeon.RimWorld.Anomaly">20</Meat_Twisted>
+		</costList>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>domom_InstallStridesOfHeresy</defName>
+		<label>install heretic's leg</label>
+		<description>Install a heretic's leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>domom_StridesOfHeresy</ThingDef>
+			<HediffDef>domom_StridesOfHeresy</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing heretic's leg.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>domom_StridesOfHeresy</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>domom_StridesOfHeresy</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>domom_StridesOfHeresy</addsHediff>
+	</RecipeDef>
+	
+</Defs>

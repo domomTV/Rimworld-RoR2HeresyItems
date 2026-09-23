@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+	<!-- ============================= -->
+		<!-- ESSENCE OF HERESY -->
+	<!-- ============================= -->
+	
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>domom_EssenceOfHeresy</defName>
+		<hediffClass>Hediff_ApplyRuin</hediffClass>
+		<label>heretic's heart</label>
+		<labelNoun>a heretic's heart</labelNoun>
+		<description>An alien organ that functions as an artificial heart. It pumps tainted blood that imbues it's user's attacks with a ruinous curse. While it isn't completely compatible with the human circulatory system, it works well enough to get the job done.</description>
+		<descriptionHyperlinks><ThingDef>domom_EssenceOfHeresy</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>domom_EssenceOfHeresy</spawnThingOnRemoved>
+		<abilities>
+			<li>domom_RuinBlast</li>
+		</abilities>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.8</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="BodyPartHeresyBase">
+		<defName>domom_EssenceOfHeresy</defName>
+		<label>essence of heresy</label>
+		<description>An alien organ that functions as an artificial heart. It pumps tainted blood that imbues it's user's attacks with a ruinous curse. While it isn't completely compatible with the human circulatory system, it works well enough to get the job done.</description>
+		<descriptionHyperlinks><RecipeDef>domom_InstallEssenceOfHeresy</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+		<statBases>
+			<Mass>0.75</Mass>
+			<MarketValue>910</MarketValue>
+		</statBases>
+		<costList>
+			<Shard MayRequire="Ludeon.RimWorld.Anomaly">2</Shard>
+			<Bioferrite MayRequire="Ludeon.RimWorld.Anomaly">15</Bioferrite>
+			<Meat_Twisted MayRequire="Ludeon.RimWorld.Anomaly">15</Meat_Twisted>
+		</costList>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>domom_InstallEssenceOfHeresy</defName>
+		<label>install heretic's heart</label>
+		<description>Install a heretic's heart.</description>
+		<descriptionHyperlinks>
+			<ThingDef>domom_EssenceOfHeresy</ThingDef>
+			<HediffDef>domom_EssenceOfHeresy</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing heretic's heart.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>domom_EssenceOfHeresy</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>domom_EssenceOfHeresy</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Heart</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>domom_EssenceOfHeresy</addsHediff>
+	</RecipeDef>
+</Defs>

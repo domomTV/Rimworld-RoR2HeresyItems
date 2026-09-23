@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ============================= -->
+		<!-- VISIONS OF HERESY -->
+	<!-- ============================= -->
+	
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>domom_VisionsOfHeresy</defName>
+		<label>heretic's eye</label>
+		<labelNoun>a heretic's eye</labelNoun>
+		<description>A dark glass sphere with an alien eye visible inside. It can emit bursts of deadly motes of energy when inserted in place of an organic eye, while passively functioning as a poor replacement.</description>
+		<descriptionHyperlinks><ThingDef>domom_VisionsOfHeresy</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>domom_VisionsOfHeresy</spawnThingOnRemoved>
+		<abilities>
+			<li>domom_VisionsOfHeresy</li>
+		</abilities>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.5</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+		<renderNodeProperties>
+			<li Class="PawnRenderNodeProperties_Eye">
+				<workerClass>PawnRenderNodeWorker_HediffEye</workerClass>
+				<texPath>Things/Pawn/Wounds/HereticEye</texPath>
+				<parentTagDef>Head</parentTagDef>
+				<drawSize>0.15</drawSize>
+				<drawData>
+					<defaultData>
+						<layer>56</layer>
+						<offset>(0, 0, -0.25)</offset>
+					</defaultData>
+					<dataWest>
+						<flip>true</flip>
+					</dataWest>
+				</drawData>
+			</li>
+		</renderNodeProperties>
+		<comps>
+			<li Class="HediffCompProperties_HeresyEnhanceAbility">
+				<baseDef>domom_VisionsOfHeresy</baseDef>
+				<enhancedDef>domom_VisionsOfHeresy_Enhanced</enhancedDef>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<ThingDef ParentName="BodyPartHeresyBase">
+		<defName>domom_VisionsOfHeresy</defName>
+		<label>visions of heresy</label>
+		<description>A dark glass sphere with an alien eye visible inside. It can emit bursts of deadly motes of energy when inserted in place of an organic eye, while passively functioning as a poor replacement.</description>
+		<descriptionHyperlinks><RecipeDef>domom_InstallVisionsOfHeresy</RecipeDef></descriptionHyperlinks>
+		<thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+		<statBases>
+			<Mass>0.3</Mass>
+			<MarketValue>505</MarketValue>
+		</statBases>
+		<costList>
+			<Shard MayRequire="Ludeon.RimWorld.Anomaly">1</Shard>
+			<Bioferrite MayRequire="Ludeon.RimWorld.Anomaly">10</Bioferrite>
+			<Meat_Twisted MayRequire="Ludeon.RimWorld.Anomaly">10</Meat_Twisted>
+		</costList>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>domom_InstallVisionsOfHeresy</defName>
+		<label>install heretic's eye</label>
+		<description>Install a heretic's eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>domom_VisionsOfHeresy</ThingDef>
+			<HediffDef>domom_VisionsOfHeresy</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing heretic's eye.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>domom_VisionsOfHeresy</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>domom_VisionsOfHeresy</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>domom_VisionsOfHeresy</addsHediff>
+	</RecipeDef>
+
+</Defs>

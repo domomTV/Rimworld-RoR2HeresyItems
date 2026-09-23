@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ============================= -->
+		<!-- HOOKS OF HERESY -->
+	<!-- ============================= -->
+	
+	<AbilityDef Name="HooksBase">
+		<defName>domom_HooksOfHeresy</defName>
+		<label>slicing maelstrom</label>
+		<description>HOOKS</description>
+		<iconPath>UI/Abilities/SlicingMaelstrom</iconPath>
+		<writeCombatLog>True</writeCombatLog>
+		<showPsycastEffects>False</showPsycastEffects>
+		<cooldownTicksRange>5000</cooldownTicksRange>
+		<verbProperties>
+			<verbClass>Verb_LaunchHooksOfHeresy</verbClass>
+			<defaultProjectile>domom_Bullet_HooksOfHeresy</defaultProjectile>
+			<range>24.8</range>
+			<soundCast>domom_HooksOfHeresy_Throw</soundCast>
+			<warmupTime>1.0</warmupTime>
+			<defaultCooldownTime>1.0</defaultCooldownTime>
+			<ai_IsWeapon>false</ai_IsWeapon>
+			<targetParams>
+				<canTargetPawns>False</canTargetPawns>
+				<canTargetLocations>True</canTargetLocations>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li>
+				<compClass>CompAbilityEffect_HeresyHideGizmo</compClass>
+			</li>
+		</comps>
+	</AbilityDef>
+	
+	<AbilityDef ParentName="HooksBase">
+		<defName>domom_HooksOfHeresy_Enhanced</defName>
+		<label>slicing maelstrom II</label>
+		<cooldownTicksRange>10000</cooldownTicksRange>
+		<verbProperties>
+			<defaultProjectile>domom_Bullet_HooksOfHeresy_Enhanced</defaultProjectile>
+		</verbProperties>
+	</AbilityDef>
+	
+	<ThingDef Name="HooksBullet" ParentName="BaseBullet">
+		<defName>domom_Bullet_HooksOfHeresy</defName>
+		<thingClass>Projectile_HooksOfHeresy</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Maelstrom</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<speed>30</speed>
+			<spawnsThingDef>domom_Maelstrom</spawnsThingDef>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="HooksBullet">
+		<defName>domom_Bullet_HooksOfHeresy_Enhanced</defName>
+		<projectile>
+			<spawnsThingDef>domom_Maelstrom_Enhanced</spawnsThingDef>
+		</projectile>
+	</ThingDef>
+	
+	<ThingDef Name="HooksMaelstrom" ParentName="EtherealThingBase">
+		<defName>domom_Maelstrom</defName>
+		<thingClass>MaelstromOrb</thingClass>
+		<graphicData>
+			<texPath>Things/Special/Maelstrom</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Maelstrom">
+				<explosiveRadiusMinor>1.9</explosiveRadiusMinor>
+				<explosiveRadius>2.6</explosiveRadius>
+				<explosiveDamageTypeMinor>domom_Maelstrom</explosiveDamageTypeMinor>
+				<explosiveDamageType>domom_MaelstromRoot</explosiveDamageType>
+				<minorDetonationsNumber>3</minorDetonationsNumber>
+				<ticksBetweenDetonations>59</ticksBetweenDetonations>
+				<minorDetonationOnSpawn>True</minorDetonationOnSpawn>
+				<explosionSound>domom_HooksOfHeresy_Explode</explosionSound>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="HooksMaelstrom">
+		<defName>domom_Maelstrom_Enhanced</defName>
+		<comps Inherit="False">
+			<li Class="CompProperties_Maelstrom">
+				<explosiveRadiusMinor>1.9</explosiveRadiusMinor>
+				<explosiveRadius>2.6</explosiveRadius>
+				<explosiveDamageTypeMinor>domom_Maelstrom</explosiveDamageTypeMinor>
+				<explosiveDamageType>domom_MaelstromRoot_Enhanced</explosiveDamageType>
+				<minorDetonationsNumber>3</minorDetonationsNumber>
+				<ticksBetweenDetonations>59</ticksBetweenDetonations>
+				<minorDetonationOnSpawn>True</minorDetonationOnSpawn>
+				<explosionSound>domom_HooksOfHeresy_Explode</explosionSound>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef>
+		<defName>domom_Hooks_VerbScum</defName>
+		<label>heretic's hook</label>
+		<thingClass>Thing</thingClass>
+	</ThingDef>
+</Defs>

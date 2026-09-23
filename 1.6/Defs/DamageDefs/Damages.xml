@@ -48,11 +48,11 @@
 		<combatLogRules>domom_Damage_Maelstrom</combatLogRules>
 	</DamageDef>
 	
-	<DamageDef ParentName="MaelstromBase">
+	<DamageDef Name="MaelstromRooted" ParentName="MaelstromBase">
 		<defName>domom_MaelstromRoot</defName>
 		<defaultDamage>15</defaultDamage>
 		<defaultArmorPenetration>0.34</defaultArmorPenetration>
-		<explosionColorEdge>(107, 78, 169)</explosionColorEdge>
+		<!-- <explosionColorEdge>(107, 78, 169)</explosionColorEdge> -->
 		<soundExplosion>domom_HooksOfHeresy_Explode_Final</soundExplosion>
 		<additionalHediffs>
 			<li>
@@ -61,13 +61,9 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="MaelstromBase">
+	<DamageDef ParentName="MaelstromRooted">
 		<defName>domom_MaelstromRoot_Enhanced</defName>
-		<defaultDamage>15</defaultDamage>
-		<defaultArmorPenetration>0.34</defaultArmorPenetration>
-		<explosionColorEdge>(107, 78, 169)</explosionColorEdge>
-		<soundExplosion>domom_HooksOfHeresy_Explode_Final</soundExplosion>
-		<additionalHediffs>
+		<additionalHediffs Inherit="False">
 			<li>
 				<hediff>domom_Rooted_Enhanced</hediff>
 			</li>
