@@ -22,6 +22,8 @@ public class HediffComp_HeresyEnhanceAbility : HediffComp {
 			if (!enhanced && ability == this.parent.AllAbilitiesForReading[0])
 			{
 				ability.def = DefDatabase<AbilityDef>.GetNamed(this.Props.enhancedDef);
+				ability.VerbTracker.InitVerbsFromZero();
+				ability.Initialize();
 				enhanced = true;
 			}
 			else
@@ -44,6 +46,8 @@ public class HediffComp_HeresyEnhanceAbility : HediffComp {
 				if (!enhanced)
 				{
 					ability.def = DefDatabase<AbilityDef>.GetNamed(this.Props.enhancedDef);
+					ability.VerbTracker.InitVerbsFromZero();
+					ability.Initialize();
 					enhanced = true;
 				}
 				else
@@ -60,6 +64,8 @@ public class HediffComp_HeresyEnhanceAbility : HediffComp {
 				if (enhanced && ability.def.defName == Props.enhancedDef)
 				{
 					ability.def = DefDatabase<AbilityDef>.GetNamed(this.Props.baseDef);
+					ability.VerbTracker.InitVerbsFromZero();
+					ability.Initialize();
 					enhanced = false;
 				}
 				else
