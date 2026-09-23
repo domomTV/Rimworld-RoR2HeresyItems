@@ -170,7 +170,7 @@
 						<clipFolderPath>Abilities/Essence/Ruin_Explode</clipFolderPath>
 					</li>
 				</grains>
-				<volumeRange>10~10</volumeRange>
+				<volumeRange>15~15</volumeRange>
 				<pitchRange>0.85~1.15</pitchRange>
 				<sustainLoop>False</sustainLoop>
 			</li>
