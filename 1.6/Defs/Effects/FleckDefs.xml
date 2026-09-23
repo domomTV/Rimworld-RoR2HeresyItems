@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<FleckDef ParentName="FleckGlowDistortBackground">
+		<defName>domom_RuinPulseEffect</defName>
+		<fleckSystemClass>FleckSystemThrown</fleckSystemClass>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.03</fadeInTime>
+		<fadeOutTime>0.05</fadeOutTime>
+		<solidTime>0.15</solidTime>
+		<growthRate>1.5</growthRate>
+		<graphicData>
+			<texPath>Things/Mote/Black</texPath>
+			<shaderParameters>
+				<_distortionIntensity>0.024</_distortionIntensity>
+				<_brightnessMultiplier>1.1</_brightnessMultiplier>
+			</shaderParameters>
+			<drawSize>2.5</drawSize>
+			<color>(77, 65, 99)</color>
+		</graphicData>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBase">
+		<defName>domom_BlastMaelstrom</defName>
+		<graphicData>
+			<texPath>Things/Mote/BlastMaelstrom/BlastMaelstrom</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<solidTime>0.1</solidTime>
+		<fadeOutTime>0.2</fadeOutTime>
+	</FleckDef>
+</Defs>

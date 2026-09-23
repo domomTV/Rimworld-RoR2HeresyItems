@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<DamageDef>
+		<defName>domom_HungeringShard</defName>
+		<label>shard</label>
+		<workerClass>DamageWorker_AddInjury</workerClass>
+		<externalViolence>true</externalViolence>
+		<!-- Funny message because this attack deals 1 damage -->
+		<deathMessage>{0} would prefer to play on Drizzle.</deathMessage>
+		<hediff>Cut</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<impactSoundType>domom_ShardImpact</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<overkillPctToDestroyPart>0.25~0.5</overkillPctToDestroyPart>
+		<isRanged>true</isRanged>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+	
+	<DamageDef ParentName="Bomb">
+		<defName>domom_ShardExplode</defName>
+		<label>shard</label>
+		<deathMessage>{0} has died from a detonating shard.</deathMessage>
+		<!-- <defaultStoppingPower>0.5</defaultStoppingPower> -->
+		<defaultArmorPenetration>1.0</defaultArmorPenetration>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<impactSoundType>domom_ShardExplode</impactSoundType>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<minDamageToFragment>999999</minDamageToFragment>
+		<buildingDamageFactorImpassable>1</buildingDamageFactorImpassable>
+		<buildingDamageFactorPassable>1</buildingDamageFactorPassable>
+		<plantDamageFactor>0.75</plantDamageFactor>
+	</DamageDef>
+
+	<DamageDef Name="MaelstromBase" ParentName="CutBase">
+		<defName>domom_Maelstrom</defName>
+		<label>maelstrom</label>
+		<deathMessage>{0} has been sliced to death.</deathMessage>
+		<hediff>Cut</hediff>
+		<hediffSkin>Cut</hediffSkin>
+		<defaultDamage>7</defaultDamage>
+		<defaultStoppingPower>0</defaultStoppingPower>
+		<defaultArmorPenetration>0.18</defaultArmorPenetration>
+		<corpseDamageFactor>0.5</corpseDamageFactor>
+		<explosionCellFleck>domom_BlastMaelstrom</explosionCellFleck>
+		<explosionColorCenter>(218, 156, 252)</explosionColorCenter>
+		<explosionColorEdge>(107, 78, 169)</explosionColorEdge>
+		<soundExplosion>domom_HooksOfHeresy_Explode</soundExplosion>
+		<combatLogRules>domom_Damage_Maelstrom</combatLogRules>
+	</DamageDef>
+	
+	<DamageDef ParentName="MaelstromBase">
+		<defName>domom_MaelstromRoot</defName>
+		<defaultDamage>15</defaultDamage>
+		<defaultArmorPenetration>0.34</defaultArmorPenetration>
+		<explosionColorEdge>(107, 78, 169)</explosionColorEdge>
+		<soundExplosion>domom_HooksOfHeresy_Explode_Final</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>domom_Rooted</hediff>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="MaelstromBase">
+		<defName>domom_MaelstromRoot_Enhanced</defName>
+		<defaultDamage>15</defaultDamage>
+		<defaultArmorPenetration>0.34</defaultArmorPenetration>
+		<explosionColorEdge>(107, 78, 169)</explosionColorEdge>
+		<soundExplosion>domom_HooksOfHeresy_Explode_Final</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>domom_Rooted_Enhanced</hediff>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="Arrow">
+		<defName>domom_Ruin</defName>
+		<label>ruin</label>
+		<defaultDamage>5</defaultDamage>
+		<defaultArmorPenetration>1.0</defaultArmorPenetration>
+		<defaultStoppingPower>1.0</defaultStoppingPower>
+		<deathMessage>{0} has been reduced to ruins.</deathMessage>
+		<hediff>Stab</hediff>
+	</DamageDef>
+	
+</Defs>

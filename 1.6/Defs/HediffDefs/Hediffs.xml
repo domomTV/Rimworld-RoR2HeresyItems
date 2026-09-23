@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<HediffDef Name="HooksRooted">
+		<defName>domom_Rooted</defName>
+		<label>rooted</label>
+		<hediffClass>HediffWithComps</hediffClass>
+		<description>A strange energy envelops this creature, tethering it to the ground it stands on.</description>
+		<isBad>true</isBad>
+		<stages>
+			<li>
+				<statFactors>
+					<MoveSpeed>0.25</MoveSpeed>
+				</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>120</disappearsAfterTicks>
+				<showRemainingTime>True</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath"/>
+		</comps>
+	</HediffDef>
+	
+	<HediffDef ParentName="HooksRooted">
+		<defName>domom_Rooted_Enhanced</defName>
+		<comps Inherit="False">
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>240</disappearsAfterTicks>
+				<showRemainingTime>True</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath"/>
+		</comps>
+	</HediffDef>
+	
+	<HediffDef Name="StridesShadowfade">
+		<defName>domom_Shadowfade</defName>
+		<label>shadowfade</label>
+		<hediffClass>HediffWithComps</hediffClass>
+		<description>This creature is moving between realities, obscuring them from vision and exposing them to strange energy.</description>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<statOffsets>
+					<MoveSpeed>1.5</MoveSpeed>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Invisibility">
+				<visibleToPlayer>true</visibleToPlayer>
+			</li>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>240</disappearsAfterTicks> <!-- 4 seconds -->
+				<showRemainingTime>True</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath"/>
+			<li Class="HediffCompProperties_ShadowfadeHeal">
+				<severityPerHealRange>-1.0~-0.5</severityPerHealRange>
+				<ticksBetweenHealRange>59</ticksBetweenHealRange>
+			</li>
+		</comps>
+	</HediffDef>
+	
+	<HediffDef ParentName="StridesShadowfade">
+		<defName>domom_Shadowfade_Enhanced</defName>
+		<comps Inherit="False">
+			<li Class="HediffCompProperties_Invisibility">
+				<visibleToPlayer>true</visibleToPlayer>
+			</li>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>480</disappearsAfterTicks> <!-- 8 seconds -->
+				<showRemainingTime>True</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath"/>
+			<li Class="HediffCompProperties_ShadowfadeHeal">
+				<severityPerHealRange>-1.0~-0.5</severityPerHealRange>
+				<ticksBetweenHealRange>59</ticksBetweenHealRange>
+			</li>
+		</comps>
+	</HediffDef>
+	
+	<HediffDef>
+		<defName>domom_Ruin</defName>
+		<label>ruin</label>
+		<hediffClass>Hediff_Ruin</hediffClass>
+		<description>A ruinous curse, brought upon by the Essence of Heresy.</description>
+		<isBad>true</isBad>
+		<alwaysShowSeverity>true</alwaysShowSeverity>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>1200</disappearsAfterTicks>
+				<showRemainingTime>True</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath"/>
+		</comps>
+	</HediffDef>
+	
+	<HediffDef ParentName="InjuryBase">
+		<defName>domom_Maelstrom_Slice</defName>
+		<label>slice</label>
+		<labelNoun>a slice</labelNoun>
+		<description>A slice.</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>bandaged</labelTendedWell>
+				<labelTendedWellInner>sutured</labelTendedWellInner>
+				<labelSolidTendedWell>set</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_Infecter">
+				<infectionChance>0.175</infectionChance>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>slice scar</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.0140</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+			<bleedRate>0.065</bleedRate>
+			<canMerge>false</canMerge>
+			<destroyedLabel>Sliced off</destroyedLabel>
+			<destroyedOutLabel>Sliced out</destroyedOutLabel>
+		</injuryProps>
+	</HediffDef>
+</Defs>

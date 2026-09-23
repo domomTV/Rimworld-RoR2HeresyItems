@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods><li>Anomaly</li></mods>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[@Name="BodyPartHeresyBase"]</xpath>
+			<value>	
+				<recipeMaker>
+					<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+					<workSkill>Crafting</workSkill>
+					<effectWorking>Smith</effectWorking>
+					<soundWorking>Recipe_Smith</soundWorking>
+					<unfinishedThingDef>UnfinishedHealthItemHeresy</unfinishedThingDef>
+					<skillRequirements>
+						<Crafting>8</Crafting>
+					</skillRequirements>
+					<researchPrerequisites>
+						<li>BioferriteShaping</li>
+						<li>Prosthetics</li>
+					</researchPrerequisites>
+					<recipeUsers>
+						<li>BioferriteShaper</li>
+					</recipeUsers>
+					<displayPriority>300</displayPriority>
+				</recipeMaker>
+			</value>
+		</match>
+	</Operation>
+	
+	<!--
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Anomaly</li>
+			<li>Royalty</li>
+		</mods>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/ThingDef[@Name="BodyPartHeresyBase"]/recipeMaker/researchPrerequisites/li[text()="Prosthetics"]</xpath>
+			<value>	
+				<li>SpecializedLimbs</li>
+			</value>
+		</match>
+	</Operation>
+	-->
+	
+</Patch>

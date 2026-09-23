@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<RulePackDef>
+		<defName>domom_Damage_Maelstrom</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>damaged_past(p=2)->sliced</li>
+				<li>damaged_past(p=2)->cut</li>
+				<li>damaged_past(p=2)->slashed</li>
+				<li>damaged_past(p=2)->gashed</li>
+				<li>damaged_past(p=2)->cleaved</li>
+				<li>damaged_past->injured</li>
+				<li>damaged_past->damaged</li>
+				<li>damaged_past->wounded</li>
+				<li>damaged_past->hurt</li>
+
+				<li>damaged_present(p=2)->slicing</li>
+				<li>damaged_present(p=2)->cutting</li>
+				<li>damaged_present(p=2)->slashing</li>
+				<li>damaged_present(p=2)->gashing</li>
+				<li>damaged_present(p=2)->cleaving</li>
+				<li>damaged_present->injuring</li>
+				<li>damaged_present->damaging</li>
+				<li>damaged_present->wounding</li>
+				<li>damaged_present->hurting</li>
+
+				<li>destroyed_past->lacerated</li>
+				<li>destroyed_past->mutilated</li>
+				<li>destroyed_past->butchered</li>
+
+				<li>destroyed_present->lacerating</li>
+				<li>destroyed_present->mutilating</li>
+				<li>destroyed_present->butchering</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	
+	<RulePackDef>
+		<defName>domom_Launch_Maelstrom</defName>
+		<include>
+			<li>Combat_RangedBase</li>
+		</include>
+		<rulePack>
+			<rulesStrings>
+				<li>r_logentry->[INITIATOR_definite] [threw] [INITIATOR_possessive] [projectile] at [RECIPIENT_definite].</li>
+				<li>r_logentry->[INITIATOR_definite] [threw_a] [projectile] at [RECIPIENT_definite].</li>
+				<li>r_logentry(RECIPIENT_missing==True)->[INITIATOR_definite] [threw] [INITIATOR_possessive] [projectile].</li>
+				<li>r_logentry(RECIPIENT_missing==True)->[INITIATOR_definite] [threw_a] [projectile].</li>
+
+				<li>threw_a->[adverb_threw] [verb_threw] a</li>
+				<li>threw_a(p=2)->[verb_threw] a</li>
+
+				<li>threw(p=2)->[verb_threw]</li>
+				<li>threw->[adverb_threw] [verb_threw]</li>
+				
+				<li>verb_threw->casted</li>
+				<li>verb_threw->unleashed</li>
+				<li>verb_threw->launched</li>
+
+				<li>adverb_threw->carefully</li>
+				<li>adverb_threw->quickly</li>
+				<li>adverb_threw->precisely</li>
+				<li>adverb_threw->deliberately</li>
+				<li>adverb_threw->erratically</li>
+				<li>adverb_threw->unpredictably</li>
+
+				<li>adjective_threw->careful</li>
+				<li>adjective_threw->quick</li>
+				<li>adjective_threw->deliberate</li>
+				<li>adjective_threw->precise</li>
+				<li>adjective_threw->erratic</li>
+				<li>adjective_threw->unpredictable</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+</Defs>

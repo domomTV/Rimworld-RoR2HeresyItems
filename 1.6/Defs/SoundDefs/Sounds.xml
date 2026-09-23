@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<SoundDef>
+		<defName>domom_VisionsOfHeresy_Fire</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Visions/Needle_Fire</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>30~30</volumeRange>
+				<!-- <pitchRange>0.9770592~1.114706</pitchRange> -->
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>domom_VisionsOfHeresy_Impact</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Visions/Needle_Impact</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>30~30</volumeRange>
+				<!-- <pitchRange>0.9770592~1.114706</pitchRange> -->
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>domom_VisionsOfHeresy_Explode</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Visions/Needle_Explode</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>20~20</volumeRange>
+				<!-- <pitchRange>0.9770592~1.114706</pitchRange> -->
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+	<ImpactSoundTypeDef>
+		<defName>domom_ShardImpact</defName>
+		<soundDef>domom_VisionsOfHeresy_Impact</soundDef>
+		<playOnlyIfHitPawn>false</playOnlyIfHitPawn>
+	</ImpactSoundTypeDef>
+	
+	<ImpactSoundTypeDef>
+		<defName>domom_ShardExplode</defName>
+		<soundDef>domom_VisionsOfHeresy_Explode</soundDef>
+		<playOnlyIfHitPawn>false</playOnlyIfHitPawn>
+	</ImpactSoundTypeDef>
+
+
+
+	<SoundDef>
+		<defName>domom_HooksOfHeresy_Throw</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Hooks/Maelstrom_Throw</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>15~15</volumeRange>
+				<!-- <pitchRange>0.9770592~1.114706</pitchRange> -->
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>domom_HooksOfHeresy_Impact</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Hooks/Maelstrom_Impact</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>30~30</volumeRange>
+				<!-- <pitchRange>0.9770592~1.114706</pitchRange> -->
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>domom_HooksOfHeresy_Explode</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Hooks/Maelstrom_Explode</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>10~10</volumeRange>
+				<pitchRange>0.85~1.15</pitchRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>domom_HooksOfHeresy_Explode_Final</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Hooks/Maelstrom_Explode</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>15~15</volumeRange>
+				<pitchRange>0.9~1.05</pitchRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>domom_HooksOfHeresy_Active</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Hooks/Maelstrom_Active</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>30~30</volumeRange>
+				<!-- <pitchRange>0.9770592~1.114706</pitchRange> -->
+				<sustainLoop>True</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+	
+	<SoundDef>
+		<defName>domom_EssenceOfHeresy_Explode</defName>
+		<context>MapOnly</context>
+		<maxSimultaneous>1</maxSimultaneous>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipFolderPath>Abilities/Essence/Ruin_Explode</clipFolderPath>
+					</li>
+				</grains>
+				<volumeRange>10~10</volumeRange>
+				<pitchRange>0.85~1.15</pitchRange>
+				<sustainLoop>False</sustainLoop>
+			</li>
+		</subSounds>
+	</SoundDef>
+</Defs>
