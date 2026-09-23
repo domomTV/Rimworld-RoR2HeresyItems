@@ -7,28 +7,30 @@
 	
 	<AbilityDef Name="StridesBase">
 		<defName>domom_StridesOfHeresy</defName>
-		<label>hungering gaze</label>
-		<description>Fire a burst of low-accuracy energy motes that will detonate after a short delay.</description>
-		<iconPath>UI/Abilities/HungeringGaze</iconPath>
+		<label>shadowfade</label>
+		<description>STRIDES</description>
+		<iconPath>UI/Abilities/Shadowfade</iconPath>
 		<writeCombatLog>True</writeCombatLog>
 		<showPsycastEffects>False</showPsycastEffects>
-		<cooldownTicksRange>2500</cooldownTicksRange>
+		<cooldownTicksRange>7500</cooldownTicksRange>
+		<hostile>false</hostile>
+		<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
 		<verbProperties>
-			<verbClass>Verb_LaunchProjectileHeresy</verbClass>
-			<defaultProjectile>domom_Bullet_VisionsOfHeresy</defaultProjectile>
-			<range>19.8</range>
-			<soundCast>domom_VisionsOfHeresy_Fire</soundCast>
-			<!-- <muzzleFlashScale>9</muzzleFlashScale> -->
-			<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+			<verbClass>Verb_JumpStridesOfHeresy</verbClass>
+			<violent>false</violent>
+			<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
 			<warmupTime>0.5</warmupTime>
-			<burstShotCount>12</burstShotCount>
-			<accuracyTouch>0.65</accuracyTouch>
-			<accuracyShort>0.6</accuracyShort>
-			<accuracyMedium>0.55</accuracyMedium>
-			<accuracyLong>0.5</accuracyLong>
-			<defaultCooldownTime>1.0</defaultCooldownTime>
-			<ai_IsWeapon>false</ai_IsWeapon>
+			<range>3.6</range>
+			<requireLineOfSight>true</requireLineOfSight>
+			<soundCast>Longjump_Jump</soundCast>
+			<soundLanding>Longjump_Land</soundLanding>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetBuildings>false</canTargetBuildings>
+			</targetParams>
 		</verbProperties>
+		<jobDef>CastJump</jobDef>
 		<comps>
 			<li>
 				<compClass>CompAbilityEffect_HeresyHideGizmo</compClass>
@@ -38,11 +40,8 @@
 	
 	<AbilityDef ParentName="StridesBase">
 		<defName>domom_StridesOfHeresy_Enhanced</defName>
-		<label>hungering gaze II</label>
-		<cooldownTicksRange>5000</cooldownTicksRange>
-		<verbProperties>
-			<burstShotCount>24</burstShotCount>
-		</verbProperties>
+		<label>shadowfade II</label>
+		<cooldownTicksRange>15000</cooldownTicksRange>
 	</AbilityDef>
 
 </Defs>
