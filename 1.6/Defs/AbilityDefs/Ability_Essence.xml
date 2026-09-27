@@ -8,7 +8,7 @@
 	<AbilityDef>
 		<defName>domom_RuinBlast</defName>
 		<label>ruin</label>
-		<description>ESSENCE</description>
+		<description>Fire a blast at each creature afflicted with ruin, detonating the curse and dealing damage based on its intensity.</description>
 		<iconPath>UI/Abilities/Ruin</iconPath>
 		<writeCombatLog>True</writeCombatLog>
 		<showPsycastEffects>False</showPsycastEffects>

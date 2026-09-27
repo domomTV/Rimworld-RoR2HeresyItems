@@ -8,7 +8,7 @@
 	<AbilityDef Name="StridesBase">
 		<defName>domom_StridesOfHeresy</defName>
 		<label>shadowfade</label>
-		<description>STRIDES</description>
+		<description>Propel the user beyond reality, granting them temporary invisibility and regeneration.</description>
 		<iconPath>UI/Abilities/Shadowfade</iconPath>
 		<writeCombatLog>True</writeCombatLog>
 		<showPsycastEffects>False</showPsycastEffects>

@@ -10,12 +10,21 @@ public class Verb_LaunchEssenceOfHeresy : Verb_LaunchProjectileHeresy {
 	}
 
 	protected override bool TryCastShot() {
+		bool success = false;
 		// Searches through all pawns on caster's map for valid targets
 		foreach (Pawn pawn in this.caster.Map.mapPawns.AllPawnsSpawned)
 		{
 			if (this.CanTargetPawn(pawn) && !pawn.Fogged())
-				this.FireProjectileAt((LocalTargetInfo) pawn);
+			{
+				bool fired = this.FireProjectileAt((LocalTargetInfo) pawn);
+				if (fired)
+					success = true;
+			}
 		}
+
+		// Don't start cooldown if unsuccessful
+		if (!success)
+			return false;
 		
 		// Stolen from Verb_AbilityShoot, sets ability cooldown if needed
 		if (this.Ability.def.cooldownTicksRange.min > 0)

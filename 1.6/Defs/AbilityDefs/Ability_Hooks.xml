@@ -8,7 +8,7 @@
 	<AbilityDef Name="HooksBase">
 		<defName>domom_HooksOfHeresy</defName>
 		<label>slicing maelstrom</label>
-		<description>HOOKS</description>
+		<description>Launch a singulatiry that lacerates everything nearby in bursts of damage. Slows creatures hit by its final burst.</description>
 		<iconPath>UI/Abilities/SlicingMaelstrom</iconPath>
 		<writeCombatLog>True</writeCombatLog>
 		<showPsycastEffects>False</showPsycastEffects>
@@ -20,6 +20,7 @@
 			<soundCast>domom_HooksOfHeresy_Throw</soundCast>
 			<warmupTime>1.5</warmupTime>
 			<defaultCooldownTime>0.5</defaultCooldownTime>
+			<canGoWild>False</canGoWild>
 			<ai_IsWeapon>false</ai_IsWeapon>
 			<targetParams>
 				<canTargetPawns>False</canTargetPawns>
