@@ -1,4 +1,5 @@
 ﻿using Verse;
+using Verse.AI;
 
 public class CompHungeringShard : ThingComp {
 	public CompProperties_HungeringShard Props => (CompProperties_HungeringShard) this.props;
@@ -13,6 +14,13 @@ public class CompHungeringShard : ThingComp {
 	
 	public override void CompTickInterval(int delta) 
 	{
+		// Destroys shard as soon as they're invalid to avoid glitched visuals
+		if (!isParentPawnValid())
+		{
+			parent.Destroy();
+			return;
+		}
+		
 		if (this.ticksUntilDetonation <= 0)
 			return;
 		this.ticksUntilDetonation -= delta;
@@ -23,6 +31,7 @@ public class CompHungeringShard : ThingComp {
 	public void Detonate() {
 		if (!(this.parent is HungeringShard shard) || shard.Destroyed)
 			return;
+		
 		// Gets damage dealt from comp properties, or damage def as fallback
 		int damage = this.Props.damageAmountBase != -1 ? this.Props.damageAmountBase : this.Props.damageType.defaultDamage;
 		// Construct damage info from comp properties & projectile info
@@ -43,5 +52,13 @@ public class CompHungeringShard : ThingComp {
 		// Shard is destroyed no matter what
 		if (!shard.Destroyed)
 			shard.Destroy();
+	}
+
+	// Checks if shard's parent is being carried or flying away
+	private bool isParentPawnValid() {
+		// Uses parent pawn's job driver to see if they are being carried or flying away.
+		// Flying away seems to also use carried so we check for both
+		JobDriver driver = ((Pawn) ((HungeringShard) this.parent)?.parent)?.jobs.curDriver;
+		return !(driver is JobDriver_ExitMapFlying || driver is JobDriver_Carried);
 	}
 }
