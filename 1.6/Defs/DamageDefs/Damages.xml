@@ -37,7 +37,7 @@
 		<deathMessage>{0} has been sliced to death.</deathMessage>
 		<hediff>Cut</hediff>
 		<hediffSkin>Cut</hediffSkin>
-		<defaultDamage>7</defaultDamage>
+		<defaultDamage>6</defaultDamage>
 		<defaultStoppingPower>0</defaultStoppingPower>
 		<defaultArmorPenetration>0.18</defaultArmorPenetration>
 		<corpseDamageFactor>0.5</corpseDamageFactor>
@@ -73,7 +73,7 @@
 	<DamageDef ParentName="Arrow">
 		<defName>domom_Ruin</defName>
 		<label>ruin</label>
-		<defaultDamage>5</defaultDamage>
+		<defaultDamage>4</defaultDamage>
 		<defaultArmorPenetration>1.0</defaultArmorPenetration>
 		<defaultStoppingPower>1.0</defaultStoppingPower>
 		<deathMessage>{0} has been reduced to ruins.</deathMessage>

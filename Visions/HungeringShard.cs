@@ -25,25 +25,27 @@ public class HungeringShard : AttachableThing {
 	{
 		get
 		{
-			Thing parent = this.parentNoComp ?? this.parent;
+			Thing parentThing = this.parentNoComp ?? this.parent;
+			// Use thing's position as a starting point
 			Vector3 baseVal = base.DrawPos;
-			// Uses base drawPos if no parent attached, 
-			if (parent == null)
-				return baseVal;
-			// Use center of parent's draw bounds as a starting point
-			// Needed for larger parents
-			Bounds bounds = parent.DrawBounds();
-			Vector3 ret = bounds.center;
-			// Set y to base value
-			// Keeps draw layer consistent
-			ret.y = baseVal.y;
-			if (!this.cached)
+			Vector3 ret = baseVal;
+			Vector3 offsetScale = new Vector3(1, 0, 1);
+			if (parentThing != null)
 			{
-				Vector3 size = bounds.size;
+				// Use center of parent's draw bounds as a starting point
+				// Needed for larger parents
+				Bounds bounds = parentThing.DrawBounds();
+				ret = bounds.center;
+				// Keeps draw layer consistent
+				ret.y = baseVal.y;
 				// Calculates draw offset based on thing's size
 				// Allows larger parents to have more spread out shards
-				Vector3 offset = new Vector3(size.x * Rand.Range(-0.5f, 0.5f), 0, size.z * Rand.Range(-0.5f, 0.5f));
-				// Stores offset & marks it as cached
+				offsetScale = bounds.size;
+			}
+			
+			if (!this.cached)
+			{
+				Vector3 offset = new Vector3(offsetScale.x * Rand.Range(-0.5f, 0.5f), 0, offsetScale.z * Rand.Range(-0.5f, 0.5f));
 				this.drawOffset = offset;
 				this.cached = true;
 			}

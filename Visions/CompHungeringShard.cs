@@ -1,5 +1,7 @@
-﻿using Verse;
+﻿using RimWorld;
+using Verse;
 using Verse.AI;
+using Verse.Sound;
 
 public class CompHungeringShard : ThingComp {
 	public CompProperties_HungeringShard Props => (CompProperties_HungeringShard) this.props;
@@ -47,6 +49,11 @@ public class CompHungeringShard : ThingComp {
 			damageInfo.SetHitPart(shard.bodyPart);
 			// Link the damage to the projectile's log
 			shard.parent.TakeDamage(damageInfo).AssociateWithLog(shard.log);
+		}
+		// If no parent:
+		else
+		{
+			SoundDefOf.BulletImpact_Ground.PlayOneShot((SoundInfo) new TargetInfo(shard.Position, shard.Map));
 		}
 		
 		// Shard is destroyed no matter what

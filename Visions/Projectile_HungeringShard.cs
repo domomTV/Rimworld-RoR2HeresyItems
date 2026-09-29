@@ -11,7 +11,7 @@ public class Projectile_HungeringShard : Projectile {
 		base.Impact(hitThing, blockedByShield);
 		BattleLogEntry_RangedImpact entryRangedImpact = new BattleLogEntry_RangedImpact(this.launcher, hitThing, this.intendedTarget.Thing, this.equipmentDef, this.def, this.targetCoverDef);
 		Find.BattleLog.Add(entryRangedImpact);
-		// this.NotifyImpact(hitThing, map, position); <----- Caused some BS cause projectile is explosive I think?
+		// removed NotifyImpact
 		if (hitThing != null)
 		{
 			bool instigatorGuilty = !(this.launcher is Pawn launcher) || !launcher.Drafted;
@@ -20,6 +20,7 @@ public class Projectile_HungeringShard : Projectile {
 			dinfo1.SetWeaponHediff(HediffDef.Named("domom_VisionsOfHeresy"));
 			DamageWorker.DamageResult result = hitThing.TakeDamage(dinfo1);
 			result.AssociateWithLog(entryRangedImpact);
+			// Attach shard to hit thing
 			if (result.totalDamageDealt > 0 && !blockedByShield)
 				this.TryAttachShard(hitThing, result.LastHitPart, entryRangedImpact);
 			if (this.ExtraDamages == null)
@@ -37,6 +38,7 @@ public class Projectile_HungeringShard : Projectile {
 		{
 			if (!blockedByShield)
 			{
+				TryGroundShard(position);
 				SoundDefOf.BulletImpact_Ground.PlayOneShot((SoundInfo) new TargetInfo(this.Position, map));
 				if (this.Position.GetTerrain(map).takeSplashes)
 					FleckMaker.WaterSplash(this.ExactPosition, map, Mathf.Sqrt((float) this.DamageAmount) * 1f, 4f);
@@ -55,23 +57,27 @@ public class Projectile_HungeringShard : Projectile {
 	{
 		if (t.Destroyed)
 			return;
-		// Initializes new hungering shard
+		
 		HungeringShard newThing = (HungeringShard) ThingMaker.MakeThing(ThingDef.Named("domom_HungeringShard"));
 		newThing.launcher = this.launcher;
 		if (t is Pawn)
 		{
-			// Sets shard's target body part
 			// Will try to damage this when detonating
 			newThing.bodyPart = bp;
-			// Sets shard's log
-			// Detonation damage will also be linked to this
+			// Detonation damage will be linked to this to avoid clutter
 			newThing.log = log;
 			newThing.AttachTo(t);
 		}
 		else
-			// Sets shard's compless parent
+			// Sets shard's non-pawn parent
 			newThing.parentNoComp = t;
 		// Spawn shard in the world
 		GenSpawn.Spawn(newThing, t.Position, t.Map, Rot4.North);
+	}
+
+	public void TryGroundShard(IntVec3 position) {
+		HungeringShard newThing = (HungeringShard) ThingMaker.MakeThing(ThingDef.Named("domom_HungeringShard"));
+		newThing.launcher = this.launcher;
+		GenSpawn.Spawn(newThing, position, this.intendedTarget.Thing.Map, Rot4.North);
 	}
 }

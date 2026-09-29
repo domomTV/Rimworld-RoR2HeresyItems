@@ -80,7 +80,7 @@
 		<comps>
 			<li Class="CompProperties_HungeringShard">
 				<damageType>domom_ShardExplode</damageType>
-				<damageAmountBase>5</damageAmountBase>
+				<damageAmountBase>4</damageAmountBase>
 				<ticksUntilDetonation>120</ticksUntilDetonation>
 			</li>
 		</comps>
