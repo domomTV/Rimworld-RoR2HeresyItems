@@ -28,6 +28,7 @@
 				<canTargetLocations>False</canTargetLocations>
 				<canTargetBuildings>False</canTargetBuildings>
 			</targetParams>
+			<stopBurstWithoutLos>False</stopBurstWithoutLos>
 		</verbProperties>
 	</AbilityDef>
 

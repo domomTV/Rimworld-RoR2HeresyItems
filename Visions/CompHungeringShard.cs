@@ -68,4 +68,9 @@ public class CompHungeringShard : ThingComp {
 		JobDriver driver = ((Pawn) ((HungeringShard) this.parent)?.parent)?.jobs.curDriver;
 		return !(driver is JobDriver_ExitMapFlying || driver is JobDriver_Carried);
 	}
+
+	public override void PostExposeData() {
+		base.PostExposeData();
+		Scribe_Values.Look<int>(ref this.ticksUntilDetonation, "ticksUntilDetonation");
+	}
 }

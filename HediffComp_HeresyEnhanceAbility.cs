@@ -76,24 +76,6 @@ public class HediffComp_HeresyEnhanceAbility : HediffComp {
 		}
 	}
 
-	// Called when a save is loaded
-	public override void Notify_Spawned() {
-		base.Notify_Spawned();
-		List<Ability> abilityList = getAbilityList();
-		// If there's only one, we don't hide it
-		if (abilityList.Count <= 1)
-			return;
-
-		// Hide all base abilities
-		foreach (Ability ability in abilityList)
-		{
-			if (ability.def.defName == this.Props.baseDef)
-			{
-				setHideAbilityGizmo(ability, true);
-			}
-		}
-	}
-
 	private List<Ability> getAbilityList() {
 		List<Ability> abilityList = new List<Ability>();
 		

@@ -55,4 +55,13 @@ public class HungeringShard : AttachableThing {
 		}
 		
 	}
+	
+	public override void ExposeData() {
+		base.ExposeData();
+		Scribe_References.Look<Thing>(ref this.launcher, "launcher");
+		Scribe_BodyParts.Look(ref this.bodyPart, "bodyPart");
+		Scribe_References.Look<Thing>(ref this.parentNoComp, "parentNoComp");
+		Scribe_References.Look<LogEntry_DamageResult>(ref this.log, "log");
+		
+	}
 }

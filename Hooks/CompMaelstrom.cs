@@ -8,7 +8,7 @@ public class CompMaelstrom : ThingComp {
 	// How many smaller detonations are left until the final
 	public int minorDetsLeft;
 	
-	public float ticksToNextDetonation = 1;
+	public int ticksToNextDetonation = 1;
 
 	public override void Initialize(CompProperties p) {
 		base.Initialize(p);
@@ -121,5 +121,11 @@ public class CompMaelstrom : ThingComp {
 			screenShakeFactor: screenShakeFactor, 
 			postExplosionSpawnSingleThingDef: postExplosionSpawnSingleThingDef, 
 			preExplosionSpawnSingleThingDef: preExplosionSpawnSingleThingDef);
+	}
+	
+	public override void PostExposeData() {
+		base.PostExposeData();
+		Scribe_Values.Look<int>(ref this.minorDetsLeft, "minorDetsLeft");
+		Scribe_Values.Look<int>(ref this.ticksToNextDetonation, "ticksToNextDetonation");
 	}
 }

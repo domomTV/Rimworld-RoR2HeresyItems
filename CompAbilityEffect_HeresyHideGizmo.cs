@@ -16,4 +16,10 @@ public class CompAbilityEffect_HeresyHideGizmo : CompAbilityEffect {
 	public override void Apply(LocalTargetInfo target, LocalTargetInfo dest) {
 		return;
 	}
+	
+	
+	public override void PostExposeData() {
+		base.PostExposeData();
+		Scribe_Values.Look<bool>(ref this.hide, "hide");
+	}
 }
